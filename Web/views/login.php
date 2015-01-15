@@ -22,7 +22,7 @@
 			</div>
 		</nav>
 		<div>
-			<h1><span class="fa fa-steam"></span> <a href="<?php echo $loginurl ?>">Log In</a></h1>
+			<h1><span class="fa fa-steam-square"></span> <a href="<?php echo $loginurl ?>">Log In</a></h1>
 		</div>
 	</body>
 </html>
