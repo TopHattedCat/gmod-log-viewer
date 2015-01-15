@@ -10,12 +10,12 @@ function IsLoggedIn() {
 }
 
 function ValidLogin() {
-	$loggedIn = IsLoggedIn();
-	if (!(in_array(Session::get("steamid", "0"), Config::get("log_viewer.allowed_steam_ids")))) {
-		return "UNAUTH";
-	}
-	if (!($loggedIn)) {
+	$sid = Session::get("steamid", "0");
+	if ($sid == "0") then
 		return "NOLOG";
+	}
+	if (!(in_array($sid, Config::get("log_viewer.allowed_steam_ids")))) {
+		return "UNAUTH";
 	}
 	return "YES";
 }
