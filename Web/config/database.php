@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'logs',
 			'username'  => 'root',
-			'password'  => 'Jaminaplantpot01',
+			'password'  => 'yourpassword',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
