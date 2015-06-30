@@ -1,8 +1,6 @@
 # Garry's Mod Log Viewer
 Server log viewer for Garry's Mod
 
-![Demo Image](https://i.tophattedcat.co.uk/u/54b6e3d85be15.png)
-
 # Installation
 
 ## Prerequisites
