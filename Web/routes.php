@@ -11,7 +11,7 @@ function IsLoggedIn() {
 
 function ValidLogin() {
 	$sid = Session::get("steamid", "0");
-	if ($sid == "0") then
+	if ($sid == "0") {
 		return "NOLOG";
 	}
 	if (!(in_array($sid, Config::get("log_viewer.allowed_steam_ids")))) {
@@ -23,7 +23,8 @@ function ValidLogin() {
 Route::get('/', function()
 {
 	if (IsLoggedIn()) {
-		$end = "/log/ALL/" . strtotime("midnight");
+		$ser = Config::get("log_viewer.servers")[0];
+		$end = "/log/" . $ser . "/" . strtotime("midnight");
 	} else {
 		$end = "/login";
 	}
@@ -44,11 +45,7 @@ Route::get("log/{servername}/{timestamp?}", function($server, $times = NULL) {
 	}
 	
 	$endtime = $time + 86400;
-	if ($server == "ALL") {
-		$results = DB::select("SELECT * FROM logs WHERE times>? AND times<?", array($server, $time, $endtime));
-	} else {
-		$results = DB::select("SELECT * FROM logs WHERE server_id=? AND times>? AND times<?", array($server, $time, $endtime));
-	}
+	$results = DB::select("SELECT * FROM logs WHERE server_id=? AND times>? AND times<?", array($server, $time, $endtime));
 	
 	$properView = date("l jS \of F Y", $time);
 	return View::make("logview", array("time" => $properView, "log_rows" => $results, "server" => $server, "serverlist" => Config::get("log_viewer.servers")));
